@@ -35,5 +35,5 @@ jobs:
     - name: Install pyinstaller
     - run: |
         pip install pyinstaller
-        pyinstaller -F app.py
+      
  
