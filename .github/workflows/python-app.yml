@@ -32,6 +32,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Install pyinstaller
+    - run: |
+        pip install pyinstaller
+        pyinstaller -F app.py
+    
     - name: Build
       run: |
         g++ app.py -o app.exe
