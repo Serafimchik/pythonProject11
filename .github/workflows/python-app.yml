@@ -36,8 +36,4 @@ jobs:
     - run: |
         pip install pyinstaller
         pyinstaller -F app.py
-    
-    - name: Build
-      run: |
-        g++ app.py -o app.exe
  
