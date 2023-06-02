@@ -27,7 +27,7 @@ jobs:
       with:
         python-version: "3.10"
         
-    #обновляем pip и устанавливаем зависимости
+    #обновляем pip и устанавливаем библиотеки для работы питоновского кода
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
