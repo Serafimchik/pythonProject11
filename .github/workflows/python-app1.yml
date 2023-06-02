@@ -38,6 +38,10 @@ jobs:
         pip install nuitka
         python -m nuitka --mingw64 app.py
         
+    - name: say Yes
+      run: |
+        Yes
+        
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with: 
