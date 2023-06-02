@@ -37,8 +37,7 @@ jobs:
       run: | 
         pip install nuitka
         python -m nuitka --mingw64 app.py
-        
-        Yes
+        No
         
     - name: say Yes
       run: |
