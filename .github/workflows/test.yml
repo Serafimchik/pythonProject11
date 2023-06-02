@@ -1,0 +1,47 @@
+name: build py
+
+#когда будем выполнять процесс
+on: 
+  push: 
+  #когда пушим
+    branches: [ "master" ]
+  pull_request: 
+  #когда пулл реквестим
+    branches: [ "master" ]
+    
+  #вручную запустить
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    #расширение выкачивает репазиторий
+    - uses: actions/checkout@v3
+    
+    #устанавливаем питон
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+        
+    #обновляем pip и устанавливаем зависимости
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name:  Build
+      run: | 
+        pip install nuitka
+        python -m nuitka --mingw64 app.py
+        
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.2
+      with: 
+        name: app
+        path: app.bin
+        retention-days: 5
+      
